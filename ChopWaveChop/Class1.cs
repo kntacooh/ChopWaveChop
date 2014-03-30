@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChopWaveChop
 {
-    class Class1
+    class WavePlay
     {
     }
 }
