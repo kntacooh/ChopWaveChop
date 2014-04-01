@@ -3,7 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ChopWaveChop" Height="350" Width="525">
     <Grid>
-        <Label Content="Hello, world!&#xD;&#xA;Hello, world!" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Hello, world!&#xD;&#xA;Hello, world!" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="PlayAndPauseButton" Content="再生" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button x:Name="StopButton" Content="停止" HorizontalAlignment="Left" Margin="90,48,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Margin="10,24,0,0"/>
+        <Menu HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="517">
+            <MenuItem Header="ファイル">
+                <MenuItem Header="開く"/>
+                <Separator/>
+                <MenuItem Header="終了"/>
+            </MenuItem>
+            <MenuItem Header="再生">
+                <MenuItem Header="再生/一時停止"/>
+                <MenuItem Header="停止"/>
+            </MenuItem>
+        </Menu>
+        <Button Content="開く" HorizontalAlignment="Left" Margin="432,24,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>
