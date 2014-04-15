@@ -2,23 +2,53 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ChopWaveChop" Height="350" Width="525">
+
+    <Window.Resources>
+        <Style x:Key="TouchOptimizedStyle" TargetType="Control">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        <Style TargetType="Menu" BasedOn="{StaticResource TouchOptimizedStyle}"/>
+        <Style TargetType="MenuItem" BasedOn="{StaticResource TouchOptimizedStyle}">
+            <Setter Property="Margin" Value="4,0,0,0"/>
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource TouchOptimizedStyle}"/>
+        <Style TargetType="Button" BasedOn="{StaticResource TouchOptimizedStyle}"/>
+    </Window.Resources>
+
     <Grid>
-        <Label Content="Hello, world!&#xD;&#xA;Hello, world!" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="PlayAndPauseButton" Content="再生" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button x:Name="StopButton" Content="停止" HorizontalAlignment="Left" Margin="90,48,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Margin="10,24,0,0"/>
-        <Menu HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="517">
-            <MenuItem Header="ファイル">
-                <MenuItem Header="開く"/>
+
+        <Menu>
+            <MenuItem Header="ファイル(_F)">
+                <MenuItem Header="開く(_O)" InputGestureText="Ctrl+O"/>
                 <Separator/>
-                <MenuItem Header="終了"/>
+                <MenuItem Header="終了(_X)" InputGestureText="Alt+F4"/>
             </MenuItem>
-            <MenuItem Header="再生">
-                <MenuItem Header="再生/一時停止"/>
-                <MenuItem Header="停止"/>
+            <MenuItem Header="再生(_P)">
+                <MenuItem Header="再生/一時停止(_P)" InputGestureText="Space"/>
+                <MenuItem Header="停止(_S)" InputGestureText="Ctrl+Space"/>
             </MenuItem>
         </Menu>
-        <Button Content="開く" HorizontalAlignment="Left" Margin="432,24,0,0" VerticalAlignment="Top" Width="75"/>
+
+        <TextBox x:Name="SourcePathTextBox" Margin="10,35,70,0"/>
+        <Button Content="開く" Click="Button_Click"
+                Width="50" Margin="0,35,10,0"
+                HorizontalAlignment="Right">
+        </Button>
+
+        <StackPanel Height="60" Margin="0,70,0,0"
+                    Orientation="Horizontal" VerticalAlignment="Top">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="60"/>
+                    <Setter Property="Margin" Value="10,0,0,0"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button Content="再生/&#xA;一時停止"/>
+            <Button Content="停止"/>
+        </StackPanel>
 
     </Grid>
+
+
 </Window>
