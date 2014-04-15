@@ -28,6 +28,9 @@
                 <MenuItem Header="再生/一時停止(_P)" InputGestureText="Space"/>
                 <MenuItem Header="停止(_S)" InputGestureText="Ctrl+Space"/>
             </MenuItem>
+            <MenuItem Header="ヘルプ(_H)">
+                <MenuItem Header="バージョン情報(_A)" Click="ShowVersionInfo"/>
+            </MenuItem>
         </Menu>
 
         <TextBox x:Name="SourcePathTextBox" Margin="10,35,70,0"/>

@@ -10,33 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ChopWaveChop
 {
     /// <summary>
-    /// MainWindow.xaml の相互作用ロジック
+    /// Window1.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class VersionInfoWindow : Window
     {
-
-        public MainWindow()
+        public VersionInfoWindow()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("ボタンが押されました。");
+            this.Close();
         }
-
-        private void ShowVersionInfo(object sender, RoutedEventArgs e)
-        {
-            VersionInfoWindow versionForm = new VersionInfoWindow();
-            versionForm.ShowDialog();
-        }
-
-
     }
 }
