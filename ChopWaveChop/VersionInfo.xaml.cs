@@ -24,9 +24,23 @@ namespace ChopWaveChop
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CloseVersionInfo(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void LoadedVersionInfo(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.FileVersionInfo fileVersionInfo=
+                System.Diagnostics.FileVersionInfo.GetVersionInfo(
+                System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+            InfoTextBlock.Inlines.Add(Environment.NewLine);
+            InfoTextBlock.Inlines.Add("バージョン番号: ");
+            InfoTextBlock.Inlines.Add(fileVersionInfo.FileVersion);
+            //InfoTextBlock.Inlines.Add(Environment.NewLine);
+            //InfoTextBlock.Inlines.Add("ビルド番号: ");
+            //InfoTextBlock.Inlines.Add(fileVersionInfo.FileBuildPart.ToString());
         }
     }
 }
