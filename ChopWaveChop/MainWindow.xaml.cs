@@ -37,6 +37,11 @@ namespace ChopWaveChop
             versionForm.ShowDialog();
         }
 
+        private void SourcePathTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
 
     }
 }

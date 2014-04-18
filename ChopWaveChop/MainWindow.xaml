@@ -4,16 +4,26 @@
         Title="ChopWaveChop" Height="350" Width="525">
 
     <Window.Resources>
-        <Style x:Key="TouchOptimizedStyle" TargetType="Control">
+        <Style x:Key="TouchOptimizedStyle" TargetType="FrameworkElement">
             <Setter Property="Height" Value="25"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
         </Style>
+
+        <Style TargetType="StackPanel" BasedOn="{StaticResource TouchOptimizedStyle}">
+            <Setter Property="Orientation" Value="Horizontal"/>
+        </Style>
+        
         <Style TargetType="Menu" BasedOn="{StaticResource TouchOptimizedStyle}"/>
         <Style TargetType="MenuItem" BasedOn="{StaticResource TouchOptimizedStyle}">
             <Setter Property="Margin" Value="4,0,0,0"/>
         </Style>
-        <Style TargetType="TextBox" BasedOn="{StaticResource TouchOptimizedStyle}"/>
+
+        <Style TargetType="TextBox" BasedOn="{StaticResource TouchOptimizedStyle}">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
         <Style TargetType="Button" BasedOn="{StaticResource TouchOptimizedStyle}"/>
+        
     </Window.Resources>
 
     <Grid>
@@ -33,14 +43,13 @@
             </MenuItem>
         </Menu>
 
-        <TextBox x:Name="SourcePathTextBox" Margin="10,35,70,0"/>
-        <Button Content="開く" Click="Button_Click"
-                Width="50" Margin="0,35,10,0"
-                HorizontalAlignment="Right">
-        </Button>
+        <TextBox Margin="10,35,70,0"
+                 x:Name="SourcePathTextBox" TextChanged="SourcePathTextBox_TextChanged"/>
+        <Button Width="50" Margin="0,35,10,0"
+                HorizontalAlignment="Right"
+                Content="開く" Click="Button_Click"/>
 
-        <StackPanel Height="60" Margin="0,70,0,0"
-                    Orientation="Horizontal" VerticalAlignment="Top">
+        <StackPanel Height="60" Margin="0,70,0,0">
             <StackPanel.Resources>
                 <Style TargetType="Button">
                     <Setter Property="Width" Value="60"/>
@@ -50,7 +59,7 @@
             <Button Content="再生/&#xD;&#xA;一時停止"/>
             <Button Content="停止"/>
         </StackPanel>
-
+                
     </Grid>
 
 
