@@ -29,6 +29,7 @@ namespace ChopWaveChop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("ボタンが押されました。");
+
         }
 
         private void ShowVersionInfo(object sender, RoutedEventArgs e)
