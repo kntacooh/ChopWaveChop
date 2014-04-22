@@ -1,0 +1,142 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Styles.xaml"/>
+        <ResourceDictionary>
+            
+            <!--Triggerだけバインディングできないの？-->
+
+            <!--再生ボタン-->
+            <ControlTemplate TargetType="Button" x:Key="PlayTemplate">
+                <Grid>
+                    <Polygon x:Name="PausePolygon"
+                             Stroke="{TemplateBinding Background}" StrokeThickness="8" Fill="Green"
+                             Points="4,0 4,60 60,30">
+                    </Polygon>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="White"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+
+            <!--一時停止ボタン-->
+            <ControlTemplate TargetType="Button" x:Key="PauseTemplate">
+                <Grid>
+                    <Polygon x:Name="PausePolygon"
+                             Stroke="{TemplateBinding Background}" StrokeThickness="8" Fill="Green"
+                             Points="4,4 4,56 30,56 30,4 30,4 30,56 56,56 56,4">
+                    </Polygon>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <!--<Trigger Property="IsKeyboardFocused" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
+                    </Trigger>-->
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="White"/>
+                    </Trigger>
+                    
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+
+            <!--停止ボタン-->
+            <ControlTemplate TargetType="Button" x:Key="StopTemplate">
+                <Grid>
+                    <Polygon x:Name="PausePolygon"
+                             Stroke="{TemplateBinding Background}" StrokeThickness="8" Fill="Green"
+                             Points="4,4 4,56 56,56 56,4">
+                    </Polygon>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="White"/>
+                    </Trigger>
+
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+
+            <!--頭出しボタン-->
+            <ControlTemplate TargetType="Button" x:Key="CueTemplate">
+                <Grid>
+                    <Polygon x:Name="PausePolygon"
+                             Stroke="{TemplateBinding Background}" StrokeThickness="8" Fill="Green"
+                             Points="4,4 4,56 24,56 24,44 40,64 40,44 56,64 56,-4 40,16 40,-4 24,16 24,4">
+                    </Polygon>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="White"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+
+            <!--コマ戻しボタン-->
+            <ControlTemplate TargetType="Button" x:Key="PreviousTemplate">
+                <Grid>
+                    <Polygon x:Name="PausePolygon"
+                             Stroke="{TemplateBinding Background}" StrokeThickness="8" Fill="Green"
+                             Points="2,30 36,-2 36,4 56,4 56,56 36,56 36,4 36,62">
+                    </Polygon>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="White"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+
+            <!--コマ送りボタン-->
+            <ControlTemplate TargetType="Button" x:Key="NextTemplate">
+                <Grid>
+                    <Polygon x:Name="PausePolygon"
+                             Stroke="{TemplateBinding Background}" StrokeThickness="8" Fill="Green"
+                             Points="4,4 4,56 24,56 24,4 24,62 58,30 24,-2 24,4">
+                    </Polygon>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="White"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+
+            <ControlTemplate TargetType="Button" x:Key="ElementTemplate">
+                <Grid>
+                    <Polygon x:Name="PausePolygon"
+                             Stroke="{TemplateBinding Background}" StrokeThickness="8" Fill="Green"
+                             Points="">
+                    </Polygon>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="true">
+                        <Setter TargetName="PausePolygon" Property="Stroke" Value="White"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
