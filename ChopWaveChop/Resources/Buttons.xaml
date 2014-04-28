@@ -8,14 +8,16 @@
             <ControlTemplate TargetType="Button" x:Key="MarkButtonTemplate">
 
                 <Grid>
-                    <Polygon x:Name="MarkPolygon" 
+                    <Polygon x:Name="MarkPolygon"
+                             SnapsToDevicePixels="True"
                              Stroke="{TemplateBinding Background}" StrokeThickness="8"/>
                     <Ellipse x:Name="MarkRecodeEllipse" Visibility="Collapsed"
+                             SnapsToDevicePixels="True"
                              Stroke="{TemplateBinding Background}" StrokeThickness="8"/>
                 </Grid>
-                
+
                 <ControlTemplate.Triggers>
-                    
+
                     <!--動作のトリガー-->
                     <MultiTrigger>
                         <MultiTrigger.Conditions>
@@ -61,7 +63,7 @@
                             </Setter.Value>
                         </Setter>
                     </MultiTrigger>
-                    
+
                     <!--形と色のトリガー-->
                     <Trigger Property="Content" Value="Play">
                         <Setter TargetName="MarkPolygon" Property="Points" Value="4,0 4,60 60,30"/>
@@ -96,9 +98,10 @@
                     </Trigger>
 
                 </ControlTemplate.Triggers>
-                
+
             </ControlTemplate>
 
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
+    
 </ResourceDictionary>
