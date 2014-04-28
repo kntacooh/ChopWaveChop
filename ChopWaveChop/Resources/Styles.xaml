@@ -1,13 +1,20 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <!--色の定義-->
+    <Color x:Key="ControlColor">#FFDDDDDD</Color>
+    <Color x:Key="SelectedControlColor">#FFBBBBBB</Color>
+    <Color x:Key="PressedControlColor">#FFFFFFFF</Color>
+
+
+    <!--各スタイルの定義-->
     <Style x:Key="TouchOptimizedStyle" TargetType="FrameworkElement">
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Height" Value="25"/>
     </Style>
 
     <Style x:Key="TouchOptimizedControl" TargetType="Control" BasedOn="{StaticResource TouchOptimizedStyle}">
-        <Setter Property="Height" Value="25"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
@@ -20,12 +27,16 @@
     <Style TargetType="MenuItem" BasedOn="{StaticResource TouchOptimizedControl}">
         <Setter Property="Margin" Value="4,0,0,0"/>
     </Style>
+    
+    <Style TargetType="ToolBarTray" BasedOn="{StaticResource TouchOptimizedStyle}"/>
+    <Style TargetType="ToolBar" BasedOn="{StaticResource TouchOptimizedControl}">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
 
     <Style TargetType="Button" BasedOn="{StaticResource TouchOptimizedControl}">
         <Setter Property="HorizontalAlignment" Value="Left"/>
     </Style>
     <Style TargetType="Label" BasedOn="{StaticResource TouchOptimizedControl}"/>
-    <Style TargetType="TextBlock" BasedOn="{StaticResource TouchOptimizedStyle}"/>
     <Style TargetType="TextBox" BasedOn="{StaticResource TouchOptimizedControl}">
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
     </Style>

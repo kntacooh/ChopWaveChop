@@ -5,136 +5,98 @@
         <ResourceDictionary Source="Styles.xaml"/>
         <ResourceDictionary>
             
-            <!--Triggerだけバインディングできないの？-->
+            <ControlTemplate TargetType="Button" x:Key="MarkButtonTemplate">
 
-            <!--再生ボタン-->
-            <ControlTemplate TargetType="Button" x:Key="PlayTemplate">
                 <Grid>
-                    <Polygon x:Name="PausePolygon"
-                             Stroke="{TemplateBinding Background}" StrokeThickness="8" Fill="Green"
-                             Points="4,0 4,60 60,30">
-                    </Polygon>
+                    <Polygon x:Name="MarkPolygon" 
+                             Stroke="{TemplateBinding Background}" StrokeThickness="8"/>
+                    <Ellipse x:Name="MarkRecodeEllipse" Visibility="Collapsed"
+                             Stroke="{TemplateBinding Background}" StrokeThickness="8"/>
                 </Grid>
+                
                 <ControlTemplate.Triggers>
-                    <Trigger Property="IsMouseOver" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
-                    </Trigger>
-                    <Trigger Property="IsPressed" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="White"/>
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
-
-            <!--一時停止ボタン-->
-            <ControlTemplate TargetType="Button" x:Key="PauseTemplate">
-                <Grid>
-                    <Polygon x:Name="PausePolygon"
-                             Stroke="{TemplateBinding Background}" StrokeThickness="8" Fill="Green"
-                             Points="4,4 4,56 30,56 30,4 30,4 30,56 56,56 56,4">
-                    </Polygon>
-                </Grid>
-                <ControlTemplate.Triggers>
-                    <!--<Trigger Property="IsKeyboardFocused" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
-                    </Trigger>-->
-                    <Trigger Property="IsMouseOver" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
-                    </Trigger>
-                    <Trigger Property="IsPressed" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="White"/>
-                    </Trigger>
                     
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
+                    <!--動作のトリガー-->
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsMouseOver" Value="true"/>
+                            <Condition SourceName="MarkPolygon" Property="Visibility" Value="Visible"/>
+                        </MultiTrigger.Conditions>
+                        <Setter TargetName="MarkPolygon" Property="Stroke">
+                            <Setter.Value>
+                                <SolidColorBrush Color="{DynamicResource SelectedControlColor}"/>
+                            </Setter.Value>
+                        </Setter>
+                    </MultiTrigger>
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsMouseOver" Value="true"/>
+                            <Condition SourceName="MarkRecodeEllipse" Property="Visibility" Value="Visible"/>
+                        </MultiTrigger.Conditions>
+                        <Setter TargetName="MarkRecodeEllipse" Property="Stroke">
+                            <Setter.Value>
+                                <SolidColorBrush Color="{DynamicResource SelectedControlColor}"/>
+                            </Setter.Value>
+                        </Setter>
+                    </MultiTrigger>
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsPressed" Value="true"/>
+                            <Condition SourceName="MarkPolygon" Property="Visibility" Value="Visible"/>
+                        </MultiTrigger.Conditions>
+                        <Setter TargetName="MarkPolygon" Property="Stroke">
+                            <Setter.Value>
+                                <SolidColorBrush Color="{DynamicResource PressedControlColor}"/>
+                            </Setter.Value>
+                        </Setter>
+                    </MultiTrigger>
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsPressed" Value="true"/>
+                            <Condition SourceName="MarkRecodeEllipse" Property="Visibility" Value="Visible"/>
+                        </MultiTrigger.Conditions>
+                        <Setter TargetName="MarkRecodeEllipse" Property="Stroke">
+                            <Setter.Value>
+                                <SolidColorBrush Color="{DynamicResource PressedControlColor}"/>
+                            </Setter.Value>
+                        </Setter>
+                    </MultiTrigger>
+                    
+                    <!--形と色のトリガー-->
+                    <Trigger Property="Content" Value="Play">
+                        <Setter TargetName="MarkPolygon" Property="Points" Value="4,0 4,60 60,30"/>
+                        <Setter TargetName="MarkPolygon" Property="Fill" Value="Green"/>
+                    </Trigger>
+                    <Trigger Property="Content" Value="Pause">
+                        <Setter TargetName="MarkPolygon" Property="Points" Value="4,4 4,56 30,56 30,4 30,4 30,56 56,56 56,4"/>
+                        <Setter TargetName="MarkPolygon" Property="Fill" Value="Green"/>
+                    </Trigger>
+                    <Trigger Property="Content" Value="Stop">
+                        <Setter TargetName="MarkPolygon" Property="Points" Value="4,4 4,56 56,56 56,4"/>
+                        <Setter TargetName="MarkPolygon" Property="Fill" Value="Green"/>
+                    </Trigger>
+                    <Trigger Property="Content" Value="Cue">
+                        <Setter TargetName="MarkPolygon" Property="Points" Value="4,4 4,56 24,56 24,44 40,64 40,44 56,64 56,-4 40,16 40,-4 24,16 24,4"/>
+                        <Setter TargetName="MarkPolygon" Property="Fill" Value="Green"/>
+                    </Trigger>
+                    <Trigger Property="Content" Value="Previous">
+                        <Setter TargetName="MarkPolygon" Property="Points" Value="2,30 36,-2 36,4 56,4 56,56 36,56 36,4 36,62"/>
+                        <Setter TargetName="MarkPolygon" Property="Fill" Value="Green"/>
+                    </Trigger>
+                    <Trigger Property="Content" Value="Next">
+                        <Setter TargetName="MarkPolygon" Property="Points" Value="4,4 4,56 24,56 24,4 24,62 58,30 24,-2 24,4"/>
+                        <Setter TargetName="MarkPolygon" Property="Fill" Value="Green"/>
+                    </Trigger>
+                    <Trigger Property="Content" Value="Recode">
+                        <Setter TargetName="MarkPolygon" Property="Visibility" Value="Collapsed"/>
+                        <Setter TargetName="MarkRecodeEllipse" Property="Visibility" Value="Visible"/>
+                        <Setter TargetName="MarkRecodeEllipse" Property="Height" Value="60"/>
+                        <Setter TargetName="MarkRecodeEllipse" Property="Width" Value="60"/>
+                        <Setter TargetName="MarkRecodeEllipse" Property="Fill" Value="Red"/>
+                    </Trigger>
 
-            <!--停止ボタン-->
-            <ControlTemplate TargetType="Button" x:Key="StopTemplate">
-                <Grid>
-                    <Polygon x:Name="PausePolygon"
-                             Stroke="{TemplateBinding Background}" StrokeThickness="8" Fill="Green"
-                             Points="4,4 4,56 56,56 56,4">
-                    </Polygon>
-                </Grid>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsMouseOver" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
-                    </Trigger>
-                    <Trigger Property="IsPressed" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="White"/>
-                    </Trigger>
-
                 </ControlTemplate.Triggers>
-            </ControlTemplate>
-
-            <!--頭出しボタン-->
-            <ControlTemplate TargetType="Button" x:Key="CueTemplate">
-                <Grid>
-                    <Polygon x:Name="PausePolygon"
-                             Stroke="{TemplateBinding Background}" StrokeThickness="8" Fill="Green"
-                             Points="4,4 4,56 24,56 24,44 40,64 40,44 56,64 56,-4 40,16 40,-4 24,16 24,4">
-                    </Polygon>
-                </Grid>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsMouseOver" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
-                    </Trigger>
-                    <Trigger Property="IsPressed" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="White"/>
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
-
-            <!--コマ戻しボタン-->
-            <ControlTemplate TargetType="Button" x:Key="PreviousTemplate">
-                <Grid>
-                    <Polygon x:Name="PausePolygon"
-                             Stroke="{TemplateBinding Background}" StrokeThickness="8" Fill="Green"
-                             Points="2,30 36,-2 36,4 56,4 56,56 36,56 36,4 36,62">
-                    </Polygon>
-                </Grid>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsMouseOver" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
-                    </Trigger>
-                    <Trigger Property="IsPressed" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="White"/>
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
-
-            <!--コマ送りボタン-->
-            <ControlTemplate TargetType="Button" x:Key="NextTemplate">
-                <Grid>
-                    <Polygon x:Name="PausePolygon"
-                             Stroke="{TemplateBinding Background}" StrokeThickness="8" Fill="Green"
-                             Points="4,4 4,56 24,56 24,4 24,62 58,30 24,-2 24,4">
-                    </Polygon>
-                </Grid>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsMouseOver" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
-                    </Trigger>
-                    <Trigger Property="IsPressed" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="White"/>
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
-
-            <ControlTemplate TargetType="Button" x:Key="ElementTemplate">
-                <Grid>
-                    <Polygon x:Name="PausePolygon"
-                             Stroke="{TemplateBinding Background}" StrokeThickness="8" Fill="Green"
-                             Points="">
-                    </Polygon>
-                </Grid>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsMouseOver" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="DarkGray"/>
-                    </Trigger>
-                    <Trigger Property="IsPressed" Value="true">
-                        <Setter TargetName="PausePolygon" Property="Stroke" Value="White"/>
-                    </Trigger>
-                </ControlTemplate.Triggers>
+                
             </ControlTemplate>
 
         </ResourceDictionary>
